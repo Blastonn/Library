@@ -32,3 +32,31 @@ text-wrap: balance;
 #root, #__next {
 isolation: isolate;
 }
+
+.container{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+}
+
+.container-card{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    width: 800px;
+    height: 400px;
+    padding: 20px;
+    background-color: red;
+}
+
+.card{
+    width: 200px;
+    height: 180px;
+    background-color: black;
+}
+
+button{
+    width: 200px;
+}
