@@ -44,9 +44,11 @@ isolation: isolate;
 
 .container-card{
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    width: 800px;
-    height: 400px;
+    grid-template-rows: repeat(2, 1fr);
+    width: auto;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 20px;
     padding: 20px;
     background-color: red;
 }
@@ -54,7 +56,7 @@ isolation: isolate;
 .card{
     width: 200px;
     height: 180px;
-    background-color: black;
+    background-color: white;
 }
 
 button{
