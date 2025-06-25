@@ -59,6 +59,11 @@ isolation: isolate;
     background-color: white;
 }
 
+::backdrop {
+    background-color: white;
+    opacity: 0.6;
+  }
+
 button{
     width: 200px;
 }

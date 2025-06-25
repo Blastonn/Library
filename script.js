@@ -35,3 +35,15 @@ showBook(book3);
 
 
 console.log(myLibrary);
+
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".dialog-form");
+const closeButton = document.querySelector("dialog button");
+
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
