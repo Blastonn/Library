@@ -1,49 +1,75 @@
 const myLibrary = [];
 
-function Book(title, author){
+function Book(title, author,page, read){
     this.title = title;
     this.author = author;
+    this.page = page;
+    this.read = read;
 }
 
-function addBookToLibrary(book){
+function addBookToLibrary(title, author, page, read){
+    const book = new Book(title, author, page, read);
     book.id = crypto.randomUUID();
     myLibrary.push(book);
     return book;
 }
 
-function showBook(book) {
+function showBook() {
     const containerCard = document.querySelector(".container-card")
-    const card = document.createElement("div")
-    card.classList.add("card");
-    card.textContent = `${book.title} ${book.author}`;
-    containerCard.appendChild(card);
+    containerCard.innerHTML = " ";
+    myLibrary.forEach(book =>{
+      const card = document.createElement("div")
+      card.classList.add("card");
+      card.textContent = `${book.title} ${book.author} ${book.page} ${book.read}`;
+      containerCard.appendChild(card);
+
+    });
+
 }
 
-const book1 = new Book("Harry Potter", "J.k Rowling");
-const book2 = new Book("title", "author");
-const book3 = new Book("title", "author");
+function formDialogShow(){
+  const showButton = document.querySelector(".dialog-form-button");
+  const dialog = document.querySelector("dialog");
+
+  showButton.addEventListener("click", () => {
+    dialog.showModal();
+  });
+}
+
+function formDialogAddBook(){
+  const dialog = document.querySelector("dialog");
+  const form = document.querySelector(".form-book")
+  
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const titulo = document.querySelector("input[name = 'book-name']").value;
+    const author = document.querySelector("input[name = 'book-author']").value;
+    const page = document.querySelector("input[name = 'book-pages']").value;
+    const read = document.querySelector("input[name = 'book-read']").value;
+  
+    console.log(titulo,author,page,read);
+    addBookToLibrary(titulo, author, page, read);
+    showBook();
+    limparInput();
+
+  
+    dialog.close();
+
+  });
+}
+
+function limparInput(){
+  const form = document.querySelector(".form-book")
+  form.reset();
+}
+
+
+formDialogShow();
+formDialogAddBook();
 
 
 
 
-addBookToLibrary(book1);
-showBook(book1);
-addBookToLibrary(book2);
-showBook(book2);
-addBookToLibrary(book3);
-showBook(book3);
 
 
-console.log(myLibrary);
 
-const dialog = document.querySelector("dialog");
-const showButton = document.querySelector(".dialog-form-button");
-const closeButton = document.querySelector("dialog button");
-
-showButton.addEventListener("click", () => {
-  dialog.showModal();
-});
-
-closeButton.addEventListener("click", () => {
-  dialog.close();
-});

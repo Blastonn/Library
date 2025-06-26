@@ -20,9 +20,9 @@
                     <div class="colum-1">
                         <div class="campo">
                             <label for="book-name">Titulo:<strong><span>*</span></strong></label>
-                            <input type="text" name="book-name" id="book-name">
+                            <input type="text" name="book-name" id="book-name" required>
                             <label for="book-author">Author:<strong><span>*</span></strong></label>
-                            <input type="text" name="book-author" id="book-author">
+                            <input type="text" name="book-author" id="book-author" required>
                         </div>
                     </div>
                     <div class="colum-2">
@@ -41,8 +41,11 @@
                             </fieldset> 
                         </div>
                     </div>
+                    <div>
+                        <button value="cancel"  autofocus>Close</button>
+                        <button value="default" id="confirm-button" type="submit">Confirm</button>
+                    </div>
                 </form>
-                <button autofocus>Close</button>
             </div>
         </dialog>
     </section>
