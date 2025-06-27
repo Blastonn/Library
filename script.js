@@ -45,7 +45,7 @@ function formDialogAddBook(){
     const titulo = document.querySelector("input[name = 'book-name']").value;
     const author = document.querySelector("input[name = 'book-author']").value;
     const page = document.querySelector("input[name = 'book-pages']").value;
-    const read = document.querySelector("input[name = 'book-read']").value;
+    const read = document.querySelector("input[name = 'book-read']:checked").value;
   
     console.log(titulo,author,page,read);
     addBookToLibrary(titulo, author, page, read);
@@ -63,7 +63,14 @@ function limparInput(){
   form.reset();
 }
 
+function closeButton(){
+  const buttonCancel = document.querySelector(".buttonCancel");
 
+  buttonCancel.addEventListener("click", () =>{
+    dialog.close();
+  })
+}
+closeButton();
 formDialogShow();
 formDialogAddBook();
 
