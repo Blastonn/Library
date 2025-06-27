@@ -19,8 +19,11 @@ function showBook() {
     containerCard.innerHTML = " ";
     myLibrary.forEach(book =>{
       const card = document.createElement("div")
+      const para = document.createElement("p");
       card.classList.add("card");
-      card.textContent = `${book.title} ${book.author} ${book.page} ${book.read}`;
+      card.appendChild(para);
+      para.classList.add("para-card");
+      para.textContent = `${book.title} ${book.author} ${book.page} ${book.read}`;
       containerCard.appendChild(card);
 
     });
