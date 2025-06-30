@@ -101,4 +101,16 @@ button{
 
 .para-card{
     padding: 15px;
+    color: red;
+}
+
+.card{
+    display: grid;
+    grid-template-rows: 1fr 0.2fr;
+    padding: 0.5rem;
+}
+
+.buttonDel{
+    width: 5rem;
+    justify-self: center;
 }

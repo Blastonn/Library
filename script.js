@@ -20,8 +20,12 @@ function showBook() {
     myLibrary.forEach(book =>{
       const card = document.createElement("div")
       const para = document.createElement("p");
+      const buttonDel = document.createElement("button");
+      buttonDel.classList.add("buttonDel");
       card.classList.add("card");
       card.appendChild(para);
+      card.appendChild(buttonDel);
+      buttonDel.textContent = "Apagar";
       para.classList.add("para-card");
       para.textContent = `${book.title} ${book.author} ${book.page} ${book.read}`;
       containerCard.appendChild(card);
@@ -68,14 +72,20 @@ function limparInput(){
 
 function closeButton(){
   const buttonCancel = document.querySelector(".buttonCancel");
+  const dialog = document.querySelector("dialog");
 
-  buttonCancel.addEventListener("click", () =>{
+
+  buttonCancel.addEventListener("click", (e) =>{
+    e.preventDefault();
     dialog.close();
   })
 }
 closeButton();
 formDialogShow();
 formDialogAddBook();
+
+addBookToLibrary("seila","seila","22");
+showBook();
 
 
 
