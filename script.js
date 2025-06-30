@@ -27,9 +27,9 @@ function showBook() {
       card.appendChild(buttonDel);
       buttonDel.textContent = "Apagar";
       para.classList.add("para-card");
+      card.dataset.id = `${book.id}`;
       para.textContent = `${book.title} ${book.author} ${book.page} ${book.read}`;
       containerCard.appendChild(card);
-
     });
 
 }
@@ -80,6 +80,23 @@ function closeButton(){
     dialog.close();
   })
 }
+
+function deleteBook(){
+
+  document.addEventListener("click", (e) =>{
+    if(e.target.classList.contains("buttonDel")){
+      const card = e.target.closest(".card");
+
+      const index = myLibrary.findIndex(book => book.id === card.dataset.id)
+
+      if(index !== -1){
+        myLibrary.splice(index, 1);
+        card.remove();
+      }
+    }
+  })
+}
+deleteBook();
 closeButton();
 formDialogShow();
 formDialogAddBook();
