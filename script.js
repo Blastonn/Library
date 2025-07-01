@@ -129,6 +129,11 @@ formDialogShow();
 formDialogAddBook();
 
 
+addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
+addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
+addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
+addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
+
 
 showBook();
 

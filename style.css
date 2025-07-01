@@ -39,24 +39,23 @@ isolation: isolate;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: black;
+    background-color: white;
 }
 
 .container-card{
     display: grid;
     grid-template-rows: repeat(2, 1fr);
-    width: auto;
+    border: solid 2px black;
     grid-auto-flow: column;
     justify-content: start;
     gap: 20px;
     padding: 20px;
-    background-color: red;
 }
 
 .card{
     width: 200px;
     height: 180px;
-    border-radius: 20px;
+    border: solid 1px black;
     background-color: white;
 }
 
@@ -107,6 +106,7 @@ button{
 .card{
     display: grid;
     grid-template-rows: 1fr 0.2fr;
+    height: 200px;
     padding: 0.5rem;
 }
 
@@ -120,10 +120,28 @@ button{
     justify-self: center;
 }
 
+nav.container-menu{
+    background-color: white;
+    box-shadow: 0px 7px 4px 0px #9C9C9C;
+    width: 100%;
+    padding: 20px;
+}
+
+.menu{
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
 button[data-value = "Não lido"]{
     border: 2px solid red;
 }
 
+section{
+    margin-top: 20px;
+}
 
 button[data-value = "Lido"]{
     border: 2px solid Green;
