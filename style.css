@@ -114,3 +114,17 @@ button{
     width: 5rem;
     justify-self: center;
 }
+
+.buttonRead{
+    width: 5rem;
+    justify-self: center;
+}
+
+button[data-value = "Não lido"]{
+    border: 2px solid red;
+}
+
+
+button[data-value = "Lido"]{
+    border: 2px solid Green;
+}

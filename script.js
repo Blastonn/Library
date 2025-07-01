@@ -7,11 +7,31 @@ function Book(title, author,page, read){
     this.read = read;
 }
 
+Book.prototype.readStatus = function(){
+  this.read = this.read === "Lido" ? "Não lido" : "Lido";
+}
+
 function addBookToLibrary(title, author, page, read){
     const book = new Book(title, author, page, read);
     book.id = crypto.randomUUID();
     myLibrary.push(book);
     return book;
+}
+
+function buttonRead(){
+  document.addEventListener("click", (e) => {
+    
+    if(e.target.classList.contains("buttonRead")){
+      const card = e.target.closest(".card");
+      const button = e.target.closest("button");
+      const livro = myLibrary.find(book => book.id === card.dataset.id)
+      if(livro){
+          livro.readStatus();
+          button.dataset.value = livro.read;
+          button.textContent = livro.read;
+        }
+    }
+  });
 }
 
 function showBook() {
@@ -21,14 +41,20 @@ function showBook() {
       const card = document.createElement("div")
       const para = document.createElement("p");
       const buttonDel = document.createElement("button");
+      const buttonRead = document.createElement("button");
+
       buttonDel.classList.add("buttonDel");
+      buttonRead.classList.add("buttonRead");
       card.classList.add("card");
       card.appendChild(para);
       card.appendChild(buttonDel);
+      card.appendChild(buttonRead);
       buttonDel.textContent = "Apagar";
+      buttonRead.textContent = book.read;
+      buttonRead.dataset.value = book.read;
       para.classList.add("para-card");
       card.dataset.id = `${book.id}`;
-      para.textContent = `${book.title} ${book.author} ${book.page} ${book.read}`;
+      para.textContent = `${book.title} ${book.author} ${book.page}`;
       containerCard.appendChild(card);
     });
 
@@ -86,7 +112,7 @@ function deleteBook(){
   document.addEventListener("click", (e) =>{
     if(e.target.classList.contains("buttonDel")){
       const card = e.target.closest(".card");
-
+      
       const index = myLibrary.findIndex(book => book.id === card.dataset.id)
 
       if(index !== -1){
@@ -96,12 +122,14 @@ function deleteBook(){
     }
   })
 }
+buttonRead();
 deleteBook();
 closeButton();
 formDialogShow();
 formDialogAddBook();
 
-addBookToLibrary("seila","seila","22");
+
+
 showBook();
 
 
