@@ -1,18 +1,19 @@
 const myLibrary = [];
 
-function Book(title, author,page, read){
+function Book(title,author,page,read,image){
     this.title = title;
     this.author = author;
     this.page = page;
     this.read = read;
+    this.image = image;
 }
 
 Book.prototype.readStatus = function(){
   this.read = this.read === "Lido" ? "Não lido" : "Lido";
 }
 
-function addBookToLibrary(title, author, page, read){
-    const book = new Book(title, author, page, read);
+function addBookToLibrary(title, author, page, read,image){
+    const book = new Book(title, author, page, read,image);
     book.id = crypto.randomUUID();
     myLibrary.push(book);
     return book;
@@ -36,6 +37,7 @@ function buttonRead(){
 
 function showBook() {
     const containerCard = document.querySelector(".container-card")
+
     containerCard.innerHTML = " ";
     myLibrary.forEach(book =>{
       const card = document.createElement("div")
@@ -45,8 +47,11 @@ function showBook() {
 
       buttonDel.classList.add("buttonDel");
       buttonRead.classList.add("buttonRead");
+
       card.classList.add("card");
       card.appendChild(para);
+      console.log(book.image);
+      adicionarImagem(book.image,card);
       card.appendChild(buttonDel);
       card.appendChild(buttonRead);
       buttonDel.textContent = "Apagar";
@@ -56,7 +61,27 @@ function showBook() {
       card.dataset.id = `${book.id}`;
       para.textContent = `${book.title} ${book.author} ${book.page}`;
       containerCard.appendChild(card);
+
     });
+
+}
+
+function adicionarImagem(url,container){
+  if(url && url.trim() !== ""){
+    const bookImage = document.createElement("img");
+    bookImage.classList.add("img-book");
+    bookImage.src = url;
+    bookImage.alt = 'Imagem adicionada';
+    container.appendChild(bookImage);
+  }else{
+    const bookImage = document.createElement("img");
+    bookImage.classList.add("img-book");
+    bookImage.src = "https://cdn-icons-png.flaticon.com/512/16/16428.png";
+    bookImage.alt = 'Imagem adicionada';
+    container.appendChild(bookImage);
+  }
+
+
 
 }
 
@@ -76,16 +101,18 @@ function formDialogAddBook(){
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const titulo = document.querySelector("input[name = 'book-name']").value;
+    const image = document.querySelector("input[name = 'book-image']").value;
     const author = document.querySelector("input[name = 'book-author']").value;
     const page = document.querySelector("input[name = 'book-pages']").value;
     const read = document.querySelector("input[name = 'book-read']:checked").value;
   
     console.log(titulo,author,page,read);
-    addBookToLibrary(titulo, author, page, read);
+    addBookToLibrary(titulo, author, page, read, image);
     showBook();
     limparInput();
 
-  
+    console.log(myLibrary);
+
     dialog.close();
 
   });
@@ -128,11 +155,7 @@ closeButton();
 formDialogShow();
 formDialogAddBook();
 
-
-addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
-addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
-addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
-addBookToLibrary("Harry Potter", "Jk Rowling", "22", "Lido");
+addBookToLibrary("Harry Potter", "author", "page", "a","");
 
 
 showBook();

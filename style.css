@@ -42,22 +42,22 @@ isolation: isolate;
     background-color: white;
 }
 
+.img-book{
+    height: 100px;
+    
+}
+
 .container-card{
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    border: solid 2px black;
+    grid-template-rows: repeat(2, 0.5fr);
+    border: solid 6px rgb(112, 93, 93);
     grid-auto-flow: column;
     justify-content: start;
     gap: 20px;
     padding: 20px;
 }
 
-.card{
-    width: 200px;
-    height: 180px;
-    border: solid 1px black;
-    background-color: white;
-}
+
 
 .container-form{
     display: flex;
@@ -106,7 +106,10 @@ button{
 .card{
     display: grid;
     grid-template-rows: 1fr 0.2fr;
-    height: 200px;
+    width: 200px;
+    justify-items: center;
+    height: auto;
+    border: 1px solid grey;
     padding: 0.5rem;
 }
 
