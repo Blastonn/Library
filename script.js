@@ -9,7 +9,7 @@ function Book(title,author,page,read,image){
 }
 
 Book.prototype.readStatus = function(){
-  this.read = this.read === "Lido" ? "Não lido" : "Lido";
+  this.read = this.read === "Lido" ? " Não lido": "Lido";
 }
 
 function addBookToLibrary(title, author, page, read,image){
@@ -35,6 +35,13 @@ function buttonRead(){
   });
 }
 
+function createPara(texto){
+  const para = document.createElement("p");
+  para.textContent = texto;
+  return para;
+}
+
+
 function showBook() {
     const containerCard = document.querySelector(".container-card")
 
@@ -49,7 +56,10 @@ function showBook() {
       buttonRead.classList.add("buttonRead");
 
       card.classList.add("card");
-      card.appendChild(para);
+      card.appendChild(createPara(`Titulo: ${book.title}`));
+      card.appendChild(createPara(`Autor: ${book.author}`));
+      card.appendChild(createPara(`Paginas: ${book.page}`));
+      para.classList.add("para-card");
       console.log(book.image);
       adicionarImagem(book.image,card);
       card.appendChild(buttonDel);
@@ -57,11 +67,8 @@ function showBook() {
       buttonDel.textContent = "Apagar";
       buttonRead.textContent = book.read;
       buttonRead.dataset.value = book.read;
-      para.classList.add("para-card");
       card.dataset.id = `${book.id}`;
-      para.textContent = `${book.title} ${book.author} ${book.page}`;
       containerCard.appendChild(card);
-
     });
 
 }

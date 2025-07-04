@@ -42,9 +42,11 @@ isolation: isolate;
     background-color: white;
 }
 
+
+
 .img-book{
+    padding: 5px;
     height: 100px;
-    
 }
 
 .container-card{
@@ -99,6 +101,7 @@ button{
 }
 
 .para-card{
+    justify-self: center;
     padding: 15px;
     color: red;
 }
