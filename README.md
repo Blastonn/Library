@@ -4,6 +4,7 @@
    A simple and elegant personal library manager built with JavaScript, HTML, and CSS.
 
 ✨ Features
+
      Add books with title, author, pages, and read status
 
      View all books as clean, dynamic cards
@@ -15,6 +16,7 @@
      Minimal and intuitive interface
 
 🛠️ Tech Stack
+
      HTML
 
      CSS
