@@ -51,8 +51,9 @@ function createClass(elemento,className){
 }
 
 function showBook() {
-    const containerCard = document.querySelector(".container-card")
+  semLivro();
 
+    const containerCard = document.querySelector(".container-card")
     containerCard.innerHTML = " ";
     myLibrary.forEach(book =>{
       const card = document.createElement("div")
@@ -65,7 +66,7 @@ function showBook() {
       createClass(buttonRead, "buttonRead");
 
       card.classList.add("card");
-      card.appendChild(create_Element("p",`Titulo: ${book.title}`,"para-card"));
+      card.appendChild(create_Element("p",`${book.title}`,"para-card"));
       card.appendChild(create_Element("p",`Autor: ${book.author}`,"para-card"));
       card.appendChild(create_Element("p",`Paginas: ${book.page}`,"para-card"));
       buttonsCard.appendChild(buttonDel);
@@ -81,6 +82,7 @@ function showBook() {
 
       containerCard.appendChild(card);
     });
+
 
 }
 
@@ -152,6 +154,21 @@ function closeButton(){
   })
 }
 
+function semLivro(){
+  const container = document.querySelector(".container");
+  const containerCard = document.querySelector(".container-card")
+  if(myLibrary.length === 0){
+    if(containerCard){
+      containerCard.remove();
+    }
+  }else{
+    if(!containerCard){
+      const containerCard = create_Element("div","","container-card");
+      container.appendChild(containerCard);
+    }
+  }
+}
+
 function deleteBook(){
 
   document.addEventListener("click", (e) =>{
@@ -164,6 +181,8 @@ function deleteBook(){
         myLibrary.splice(index, 1);
         card.remove();
       }
+      semLivro();
+
     }
   })
 }
@@ -173,8 +192,9 @@ closeButton();
 formDialogShow();
 formDialogAddBook();
 
+
 addBookToLibrary("O diabo veste prada", "Lauren Weisberger", "414", "Não lido","https://m.media-amazon.com/images/I/61iRMz3IilL.jpg");
-addBookToLibrary("O escaravelho do diabo", "Lúcia Machado", "323", "Lido","https://ogimg.infoglobo.com.br/in/15216477-ea5-ec0/FT1086A/escza.jpg");
+addBookToLibrary("Harry Potter e a Câmara Secreta: 2", "J.K. Rowling", "224", "Lido","https://m.media-amazon.com/images/I/51SnGLrrJcL._SY445_SX342_.jpg");
 addBookToLibrary("Harry Potter e a Pedra Filosofal: 1", "J.K. Rowling", "208", "Lido","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRspAXv9PUv1aVbmSitOhF-HSdH00_pZyZwCg&s");
 
 
