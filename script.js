@@ -9,7 +9,7 @@ function Book(title,author,page,read,image){
 }
 
 Book.prototype.readStatus = function(){
-  this.read = this.read === "Lido" ? " Não lido": "Lido";
+  this.read = this.read === "Lido" ? "Não lido": "Lido";
 }
 
 function addBookToLibrary(title, author, page, read,image){
@@ -173,11 +173,10 @@ closeButton();
 formDialogShow();
 formDialogAddBook();
 
-addBookToLibrary("Harry Potter", "author", "page", "Lido","");
-addBookToLibrary("Harry Potter", "author", "page", "Lido","");
-addBookToLibrary("Harry Potter", "author", "page", "Lido","");
-addBookToLibrary("Harry Potter", "author", "page", "Lido","");
-addBookToLibrary("Harry Potter", "author", "page", "Lido","");
+addBookToLibrary("O diabo veste prada", "Lauren Weisberger", "414", "Não lido","https://m.media-amazon.com/images/I/61iRMz3IilL.jpg");
+addBookToLibrary("O escaravelho do diabo", "Lúcia Machado", "323", "Lido","https://ogimg.infoglobo.com.br/in/15216477-ea5-ec0/FT1086A/escza.jpg");
+addBookToLibrary("Harry Potter e a Pedra Filosofal: 1", "J.K. Rowling", "208", "Lido","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRspAXv9PUv1aVbmSitOhF-HSdH00_pZyZwCg&s");
+
 
 
 

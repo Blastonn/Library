@@ -42,7 +42,10 @@ isolation: isolate;
     background-color: white;
 }
 
+img{
+    border-radius: 33px;
 
+}
 
 .img-book{
     padding: 5px;
@@ -62,7 +65,7 @@ isolation: isolate;
 
 .para-card{
     color: #F5F5DC;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .container-form{
@@ -112,9 +115,10 @@ button{
 
 .card{
     display: grid;
-    grid-template-rows: 1fr 0.2fr;
+    grid-template-rows: repeat(5,0.2fr);
     width: 200px;
     justify-items: center;
+    align-content: space-between;
     background-color: grey;
     height: auto;
     border: 1px solid black;
