@@ -46,20 +46,24 @@ isolation: isolate;
 
 .img-book{
     padding: 5px;
-    height: 100px;
+    width: 200px;
+    height: 210px;
 }
 
 .container-card{
     display: grid;
-    grid-template-rows: repeat(2, 0.5fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
     border: solid 6px rgb(112, 93, 93);
-    grid-auto-flow: column;
+    max-width: calc(280px * 4 + 3rem);
     justify-content: start;
     gap: 20px;
     padding: 20px;
 }
 
-
+.para-card{
+    color: #F5F5DC;
+    font-size: 18px;
+}
 
 .container-form{
     display: flex;
@@ -100,10 +104,10 @@ button{
     width: 200px;
 }
 
-.para-card{
-    justify-self: center;
-    padding: 15px;
-    color: red;
+.button-card{
+    display: flex;
+    gap: 5px;
+    padding: 10px;
 }
 
 .card{
@@ -111,9 +115,14 @@ button{
     grid-template-rows: 1fr 0.2fr;
     width: 200px;
     justify-items: center;
+    background-color: grey;
     height: auto;
-    border: 1px solid grey;
+    border: 1px solid black;
     padding: 0.5rem;
+}
+
+.card:hover{
+    opacity: 0.9;
 }
 
 .buttonDel{

@@ -35,12 +35,20 @@ function buttonRead(){
   });
 }
 
-function createPara(texto){
-  const para = document.createElement("p");
-  para.textContent = texto;
-  return para;
+function create_Element(name,texto,className){
+  const element = document.createElement(name);
+  element.textContent = texto;
+  if(className){
+    element.classList.add(className);
+    return element;
+
+  }else return element;
 }
 
+function createClass(elemento,className){
+   elemento.classList.add(className);
+   return elemento;
+}
 
 function showBook() {
     const containerCard = document.querySelector(".container-card")
@@ -49,25 +57,28 @@ function showBook() {
     myLibrary.forEach(book =>{
       const card = document.createElement("div")
       const para = document.createElement("p");
+      const buttonsCard = create_Element("div", "", "button-card")
       const buttonDel = document.createElement("button");
       const buttonRead = document.createElement("button");
 
-      buttonDel.classList.add("buttonDel");
-      buttonRead.classList.add("buttonRead");
+      createClass(buttonDel, "buttonDel");
+      createClass(buttonRead, "buttonRead");
 
       card.classList.add("card");
-      card.appendChild(createPara(`Titulo: ${book.title}`));
-      card.appendChild(createPara(`Autor: ${book.author}`));
-      card.appendChild(createPara(`Paginas: ${book.page}`));
+      card.appendChild(create_Element("p",`Titulo: ${book.title}`,"para-card"));
+      card.appendChild(create_Element("p",`Autor: ${book.author}`,"para-card"));
+      card.appendChild(create_Element("p",`Paginas: ${book.page}`,"para-card"));
+      buttonsCard.appendChild(buttonDel);
+      buttonsCard.appendChild(buttonRead);
       para.classList.add("para-card");
       console.log(book.image);
       adicionarImagem(book.image,card);
-      card.appendChild(buttonDel);
-      card.appendChild(buttonRead);
       buttonDel.textContent = "Apagar";
       buttonRead.textContent = book.read;
       buttonRead.dataset.value = book.read;
       card.dataset.id = `${book.id}`;
+      card.appendChild(buttonsCard);
+
       containerCard.appendChild(card);
     });
 
@@ -162,7 +173,12 @@ closeButton();
 formDialogShow();
 formDialogAddBook();
 
-addBookToLibrary("Harry Potter", "author", "page", "a","");
+addBookToLibrary("Harry Potter", "author", "page", "Lido","");
+addBookToLibrary("Harry Potter", "author", "page", "Lido","");
+addBookToLibrary("Harry Potter", "author", "page", "Lido","");
+addBookToLibrary("Harry Potter", "author", "page", "Lido","");
+addBookToLibrary("Harry Potter", "author", "page", "Lido","");
+
 
 
 showBook();
